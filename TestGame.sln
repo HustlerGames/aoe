@@ -9,6 +9,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "editor", "editor\editor.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "common", "common\common.vcxitems", "{88DEB979-5FEE-42CF-AB05-D701C6E3F9F0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8AA469F3-57F4-4193-8B79-0310B54BBB62}"
+	ProjectSection(SolutionItems) = preProject
+		settings.txt = settings.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		common\common.vcxitems*{52b05c23-d95a-4eb2-855e-a3c6914ee2ad}*SharedItemsImports = 4

@@ -7,8 +7,6 @@
 #define fourccXWMA 'AMWX'
 #define fourccDPDS 'sdpd'
 
-
-
 class VoiceCallback : public IXAudio2VoiceCallback
 {
 public:
@@ -164,16 +162,18 @@ void AudioSystem::play(unsigned int id)
 
 AudioSystem::AudioSystem()
 {
-
+    
 }
+
+
 void AudioSystem::loadSounds()
 {
-    sounds[SOUND_PICK1] = createSound(TEXT("d:\\projects\\testgame\\data\\sounds\\pick1.wav"));
-    sounds[SOUND_BACKGROUND1] = createSound(TEXT("d:\\projects\\testgame\\data\\sounds\\background1.wav"));
-    sounds[SOUND_HARVEST_TREE] = createSound(TEXT("d:\\projects\\testgame\\data\\sounds\\harvest_tree1.wav"));
-    sounds[SOUND_BUSH] = createSound(TEXT("d:\\projects\\testgame\\data\\sounds\\bush.wav"));
-    sounds[SOUND_BUILD] = createSound(TEXT("d:\\projects\\testgame\\data\\sounds\\build.wav"));
-    sounds[SOUND_BUILDING] = createSound(TEXT("d:\\projects\\testgame\\data\\sounds\\building.wav"));
+    sounds[SOUND_PICK1] = createSound(TEXT("d:\\projects\\testgame\\repo\\data\\sounds\\pick1.wav"));
+    sounds[SOUND_BACKGROUND1] = createSound(TEXT("d:\\projects\\testgame\\repo\\data\\sounds\\background1.wav"));
+    sounds[SOUND_HARVEST_TREE] = createSound(TEXT("d:\\projects\\testgame\\repo\\data\\sounds\\harvest_tree1.wav"));
+    sounds[SOUND_BUSH] = createSound(TEXT("d:\\projects\\testgame\\repo\\data\\sounds\\bush.wav"));
+    sounds[SOUND_BUILD] = createSound(TEXT("d:\\projects\\testgame\\repo\\data\\sounds\\build.wav"));
+    sounds[SOUND_BUILDING] = createSound(TEXT("d:\\projects\\testgame\\repo\\data\\sounds\\building.wav"));
 }
 
 bool AudioSystem::init()

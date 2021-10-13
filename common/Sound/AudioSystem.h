@@ -3,7 +3,9 @@
 #include <windows.h>
 #include <fileapi.h>
 #include <xaudio2.h>
+#include <direct.h>
 #include "World/sounds.h"
+
 
 #define SOUND_PLAYING 1
 #define SOUND_STOPPED 2
