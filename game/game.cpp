@@ -1,8 +1,8 @@
-﻿// editor.cpp : Определяет точку входа для приложения.
+﻿// game.cpp : Определяет точку входа для приложения.
 //
 
 #include "framework.h"
-#include "editor.h"
+#include "game.h"
 
 #define MAX_LOADSTRING 100
 
@@ -17,15 +17,14 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
+
 GraphicSystem GS;
 Resources resources;
 World world;
 Renderer renderer;
-EditorUI gui;
-MapEditor editor;
+GameUI gui;
+Handler handler;
 AudioSystem audio;
-
-
 
 
 
@@ -41,7 +40,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     // Инициализация глобальных строк
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-    LoadStringW(hInstance, IDC_EDITOR, szWindowClass, MAX_LOADSTRING);
+    LoadStringW(hInstance, IDC_GAME, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
 
     // Выполнить инициализацию приложения:
@@ -50,7 +49,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
-    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_EDITOR));
+    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_GAME));
 
     bool bGotMsg;
     MSG msg;
@@ -74,6 +73,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         else
         {
 
+            world.update();
+
             POINT p;
             GetCursorPos(&p);
             // Render a frame during idle time (no messages are waiting)
@@ -82,8 +83,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
     }
 
+    return (int)msg.wParam;
 
-    return (int) msg.wParam;
 }
 
 
@@ -104,7 +105,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.cbClsExtra     = 0;
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
-    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_EDITOR));
+    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_GAME));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
     wcex.lpszMenuName   = nullptr;
@@ -139,16 +140,16 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ShowWindow(hWnd, nCmdShow);
 
    GS.init(hWnd);
-
    resources.Load("resources.xml");
 
+   //WorldFile::read();
    world.LoadDefault();
-
-   renderer.init();
-
+   
    gui.init();
-
    renderer.gui = &gui;
+   renderer.init();
+   audio.init();
+   audio.play(SOUND_BACKGROUND1);
 
    return TRUE;
 
@@ -175,9 +176,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case VK_END:
             PostQuitMessage(0);
             break;
-        case VK_NUMPAD0:
-            WorldFile::save();
-            break;
         }
     }
     break;
@@ -187,7 +185,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         int screenY = GET_Y_LPARAM(lParam);
         if (gui.onRMouse(screenX, screenY) == false)
         {
-            editor.rMouseDown(screenX, screenY);
+            handler.onRightClick(screenX, screenY);
         }
     }
     break;
@@ -197,27 +195,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         int screenY = GET_Y_LPARAM(lParam);
         if (gui.onLMouse(screenX, screenY) == false)
         {
-            editor.lMouseDown(screenX, screenY);
+            handler.onLeftClick(screenX, screenY);
         }
+
     }
     break;
     case WM_LBUTTONUP:
     {
-        int screenX = GET_X_LPARAM(lParam);
-        int screenY = GET_Y_LPARAM(lParam);
-
-        editor.lMouseUp(screenX, screenY);
     }
     break;
     case WM_MOUSEMOVE:
     {
-        int screenX = GET_X_LPARAM(lParam);
-        int screenY = GET_Y_LPARAM(lParam);
-
-        if (gui.isInsideWnd(screenX, screenY) == false)
-        {
-            editor.MouseMove(screenX, screenY);
-        }
     }
     break;
 

@@ -3,11 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game_vsproj", "gamevsproj\gamevsproj.vcxproj", "{28C56CB2-C443-485D-9887-48737ED058A0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game", "game\game.vcxproj", "{52B05C23-D95A-4EB2-855E-A3C6914EE2AD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mapeditor_vsproj", "mapeditor_vsproj\mapeditor_vsproj.vcxproj", "{17C64283-FF37-4715-97FD-F6AF09732044}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "editor", "editor\editor.vcxproj", "{9B48F465-BB18-49FE-B2A2-B4DED20995BA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "common", "common\common.vcxitems", "{88DEB979-5FEE-42CF-AB05-D701C6E3F9F0}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		common\common.vcxitems*{52b05c23-d95a-4eb2-855e-a3c6914ee2ad}*SharedItemsImports = 4
+		common\common.vcxitems*{88deb979-5fee-42cf-ab05-d701c6e3f9f0}*SharedItemsImports = 9
+		common\common.vcxitems*{9b48f465-bb18-49fe-b2a2-b4ded20995ba}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
@@ -15,27 +22,27 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{28C56CB2-C443-485D-9887-48737ED058A0}.Debug|x64.ActiveCfg = Debug|x64
-		{28C56CB2-C443-485D-9887-48737ED058A0}.Debug|x64.Build.0 = Debug|x64
-		{28C56CB2-C443-485D-9887-48737ED058A0}.Debug|x86.ActiveCfg = Debug|Win32
-		{28C56CB2-C443-485D-9887-48737ED058A0}.Debug|x86.Build.0 = Debug|Win32
-		{28C56CB2-C443-485D-9887-48737ED058A0}.Release|x64.ActiveCfg = Release|x64
-		{28C56CB2-C443-485D-9887-48737ED058A0}.Release|x64.Build.0 = Release|x64
-		{28C56CB2-C443-485D-9887-48737ED058A0}.Release|x86.ActiveCfg = Release|Win32
-		{28C56CB2-C443-485D-9887-48737ED058A0}.Release|x86.Build.0 = Release|Win32
-		{17C64283-FF37-4715-97FD-F6AF09732044}.Debug|x64.ActiveCfg = Debug|x64
-		{17C64283-FF37-4715-97FD-F6AF09732044}.Debug|x64.Build.0 = Debug|x64
-		{17C64283-FF37-4715-97FD-F6AF09732044}.Debug|x86.ActiveCfg = Debug|Win32
-		{17C64283-FF37-4715-97FD-F6AF09732044}.Debug|x86.Build.0 = Debug|Win32
-		{17C64283-FF37-4715-97FD-F6AF09732044}.Release|x64.ActiveCfg = Release|x64
-		{17C64283-FF37-4715-97FD-F6AF09732044}.Release|x64.Build.0 = Release|x64
-		{17C64283-FF37-4715-97FD-F6AF09732044}.Release|x86.ActiveCfg = Release|Win32
-		{17C64283-FF37-4715-97FD-F6AF09732044}.Release|x86.Build.0 = Release|Win32
+		{52B05C23-D95A-4EB2-855E-A3C6914EE2AD}.Debug|x64.ActiveCfg = Debug|x64
+		{52B05C23-D95A-4EB2-855E-A3C6914EE2AD}.Debug|x64.Build.0 = Debug|x64
+		{52B05C23-D95A-4EB2-855E-A3C6914EE2AD}.Debug|x86.ActiveCfg = Debug|Win32
+		{52B05C23-D95A-4EB2-855E-A3C6914EE2AD}.Debug|x86.Build.0 = Debug|Win32
+		{52B05C23-D95A-4EB2-855E-A3C6914EE2AD}.Release|x64.ActiveCfg = Release|x64
+		{52B05C23-D95A-4EB2-855E-A3C6914EE2AD}.Release|x64.Build.0 = Release|x64
+		{52B05C23-D95A-4EB2-855E-A3C6914EE2AD}.Release|x86.ActiveCfg = Release|Win32
+		{52B05C23-D95A-4EB2-855E-A3C6914EE2AD}.Release|x86.Build.0 = Release|Win32
+		{9B48F465-BB18-49FE-B2A2-B4DED20995BA}.Debug|x64.ActiveCfg = Debug|x64
+		{9B48F465-BB18-49FE-B2A2-B4DED20995BA}.Debug|x64.Build.0 = Debug|x64
+		{9B48F465-BB18-49FE-B2A2-B4DED20995BA}.Debug|x86.ActiveCfg = Debug|Win32
+		{9B48F465-BB18-49FE-B2A2-B4DED20995BA}.Debug|x86.Build.0 = Debug|Win32
+		{9B48F465-BB18-49FE-B2A2-B4DED20995BA}.Release|x64.ActiveCfg = Release|x64
+		{9B48F465-BB18-49FE-B2A2-B4DED20995BA}.Release|x64.Build.0 = Release|x64
+		{9B48F465-BB18-49FE-B2A2-B4DED20995BA}.Release|x86.ActiveCfg = Release|Win32
+		{9B48F465-BB18-49FE-B2A2-B4DED20995BA}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {CB228C6B-598A-4975-B93A-BDBA152054A8}
+		SolutionGuid = {16118DE4-2A4D-4D89-B8D2-0AEFF0E60756}
 	EndGlobalSection
 EndGlobal
